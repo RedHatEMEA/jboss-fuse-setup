@@ -113,7 +113,7 @@ echo -e $GREEN"All containers have been created."$WHITE
 echo -e $YELLOW"Waiting for fabric command: profile-edit"$WHITE
 karaf_client wait-for-command fabric profile-edit
 
-karaf_client fabric:profile-edit --append --pid io.fabric8.agent/org.ops4j.pax.url.mvn.repositories=\"$MAVEN_REPOSITORY\" default
+karaf_client fabric:profile-edit --pid io.fabric8.agent/org.ops4j.pax.url.mvn.repositories=\"$MAVEN_REPOSITORY\" default
 karaf_client fabric:profile-edit --pid org.ops4j.pax.logging/log4j.logger.io.fabric8.service.ssh=INFO karaf
 karaf_client fabric:profile-edit --pid \"org.ops4j.pax.logging/log4j.rootLogger=INFO, out, osgi:*\" karaf
 

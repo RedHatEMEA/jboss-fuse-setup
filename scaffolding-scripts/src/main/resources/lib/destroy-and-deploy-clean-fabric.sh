@@ -67,7 +67,7 @@ karaf_client fabric:version-create --default $RELEASE_VERSION
 echo -e $GREEN"Applying base config for mvn and logging"$WHITE
 
 # Set maven repos
-karaf_client fabric:profile-edit --append --pid io.fabric8.agent/org.ops4j.pax.url.mvn.repositories=\"$REMOTE_MAVEN_REPOSITORY\" default
+karaf_client fabric:profile-edit --pid io.fabric8.agent/org.ops4j.pax.url.mvn.repositories=\"$REMOTE_MAVEN_REPOSITORY\" default
 karaf_client fabric:profile-edit --pid io.fabric8.agent/patch.repositories=\"$PATCH_MAVEN_REPOSITORY\" default
 
 # Increase debugging

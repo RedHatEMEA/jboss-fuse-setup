@@ -25,7 +25,7 @@
     </formats>
     <fileSets>
         <fileSet>
-            <directory>offlineRepository</directory>
+            <directory>${project.build.directory}/offlineRepository</directory>
             <outputDirectory>offlineRepository</outputDirectory>
         </fileSet>
     </fileSets>
