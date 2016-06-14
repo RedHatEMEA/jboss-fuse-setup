@@ -1,0 +1,4 @@
+source mvn:com.redhat.consulting.jboss-fuse-setup/karaf-scripts/1.0.0/karaf/_constants
+
+fabric:container-add-profile $ESB_CONTAINER_NAME $ESB_PROFILE_NAME
+fabric:container-add-profile $AMQ_CONTAINER_NAME $AMQ_PROFILE_NAME

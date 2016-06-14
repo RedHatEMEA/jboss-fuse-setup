@@ -1,0 +1,29 @@
+# IntelliJ IDEA #
+.idea/
+*.iml
+
+# Eclipse Files #
+.metadata
+.settings
+.project
+.classpath
+RemoteSystemsTempFiles
+
+# General Java Folders #
+bin/
+target/
+
+# Java Package Files #
+*.jar
+*.class
+
+# General #
+tmp/
+*.tmp
+
+# AMQ Performance Testing #
+JmsConsumer_*.xml
+JmsProducer_*.xml
+
+# Testing #
+.ekstazi/

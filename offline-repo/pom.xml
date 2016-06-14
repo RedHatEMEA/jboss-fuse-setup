@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.redhat.consulting.jboss-fuse-setup</groupId>
+        <artifactId>jboss-fuse-setup-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <artifactId>offline-repo</artifactId>
+    <description>Creates offline-repo with all the dependencies</description>
+    <name>RedHat Consulting :: JBoss Fuse Setup :: Offline Repository</name>
+    <packaging>pom</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.karaf.tooling</groupId>
+                <artifactId>features-maven-plugin</artifactId>
+                <version>${features-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-features-to-repo</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-features-to-repo</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                              <descriptor>mvn:com.redhat.consulting.karaf-commands/ensemble-healthy/${project.version}/xml/features</descriptor>
+                              <descriptor>mvn:com.redhat.consulting.karaf-commands/container-status/${project.version}/xml/features</descriptor>
+                            </descriptors>
+                            <features>
+                                <feature>container-status</feature>
+                                <feature>ensemble-healthy</feature>
+                            </features>
+                            <addTransitiveFeatures>true</addTransitiveFeatures>
+                            <repository>offlineRepository</repository>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptors>
+                        <descriptor>assembly/zip.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

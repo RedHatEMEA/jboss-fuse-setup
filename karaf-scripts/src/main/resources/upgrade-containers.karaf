@@ -1,0 +1,6 @@
+source mvn:com.redhat.consulting.jboss-fuse-setup/karaf-scripts/1.0.0/karaf/_constants
+
+# Upgrade the containers so they have access to the latest profiles
+fabric:container-upgrade 1.1 $ROOT_CONTAINER_NAME
+fabric:container-upgrade 1.1 $ESB_CONTAINER_NAME
+fabric:container-upgrade 1.1 $AMQ_CONTAINER_NAME

@@ -1,0 +1,7 @@
+source mvn:com.redhat.consulting.jboss-fuse-setup/karaf-scripts/1.0.0/karaf/_constants
+
+# Create ESB
+fabric:container-create-child $ROOT_CONTAINER_NAME $ESB_CONTAINER_NAME
+
+# Create AMQ
+fabric:container-create-child $ROOT_CONTAINER_NAME $AMQ_CONTAINER_NAME 

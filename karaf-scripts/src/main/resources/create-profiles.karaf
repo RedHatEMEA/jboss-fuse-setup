@@ -1,0 +1,17 @@
+source mvn:com.redhat.consulting.jboss-fuse-setup/karaf-scripts/1.0.0/karaf/_constants
+
+# Create a new profile version, so changes do not effect any containers until they are upgraded
+fabric:version-create --default
+
+# Create a profile for the ESB
+fabric:profile-create --parents jboss-fuse-minimal $ESB_PROFILE_NAME
+
+# Add the examples features
+fabric:profile-edit --repositories mvn:com.redhat.consulting.jboss-fuse-examples/examples-features/1.0.0-SNAPSHOT/xml/features $ESB_PROFILE_NAME
+
+# Create a profile for the AMQ
+fabric:profile-create --parents mq-base $AMQ_PROFILE_NAME
+
+# Add xstream so we can use stomp in the future
+fabric:profile-edit --repositories mvn:org.apache.camel.karaf/apache-camel/\${version:camel}/xml/features $AMQ_PROFILE_NAME
+fabric:profile-edit --features camel-xstream $AMQ_PROFILE_NAME
